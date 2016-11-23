@@ -387,8 +387,12 @@ hand_positions = {' ': thumb,
 
 
 def make_some(population):
-    words = ''.join(random.choice(' jf') for x in range(100)).strip()
-    words = re.sub('\s+', ' ', words)
+    if population == ' jf':
+    	words = ''.join(random.choice(' jf') for x in range(10)).strip()
+    	words = re.sub('\s+', ' ', words)
+    elif population == 'py':
+    	# words = 'from sklearn.ensemble import RandomForestClassifier\nrf = RandomForestClassifier(n_estimators=500, random_state=0).fit(train_data_finite, train_labels)\nprint("random forest score: {}.format(rf.score(test_data_finite, test_labels))"'
+    	words = 'rf = RandomForestClassifier(n_estimators=500, random_state=0).fit(train_data_finite, train_labels)\nprint("random forest score: {}.format(rf.score(test_data_finite, test_labels))"'
     return words
 
 level_one_one = make_some(' jf')
@@ -455,4 +459,5 @@ def test(text):
 
 
 if __name__ == '__main__':
-    test(level_one_one)
+    # test(level_one_one)
+    test(make_some('py'))
